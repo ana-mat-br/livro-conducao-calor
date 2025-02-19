@@ -1,0 +1,28 @@
+\babel@toc {portuguese}{}\relax 
+\contentsline {chapter}{\numberline {1}Fundamentos de condução de calor}{9}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Fluxo de Calor e Temperatura}{9}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Equação diferencial geral da difusão de calor}{10}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Equação da difusão de calor diferencial em coordenadas retangulares}{10}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Outros sistemas de coordenadas}{13}{subsection.1.2.2}%
+\contentsline {subsubsection}{Sistema de Coordenadas Cilíndricas}{13}{section*.5}%
+\contentsline {subsubsection}{Sistema de Coordenadas esféricas}{14}{section*.6}%
+\contentsline {subsection}{\numberline {1.2.3}Condições particulares}{14}{subsection.1.2.3}%
+\contentsline {section}{\numberline {1.3}Condições de contorno e condição inicial}{16}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Condição de contorno do primeiro tipo}{16}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Condição de contorno do segundo tipo}{16}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Condição de contorno do terceiro tipo}{17}{subsection.1.3.3}%
+\contentsline {section}{\numberline {1.4}Notas: A Lei de Fourier e a Condutividade Térmica}{18}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Lei de Fourier}{18}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Condutividade Térmica}{19}{subsection.1.4.2}%
+\contentsline {chapter}{\numberline {2}Funções de Green}{23}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Vantagens do Método de Funções de Green}{23}{section.2.1}%
+\contentsline {section}{\numberline {2.2}A Função Delta de Dirac Delta}{24}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Temperatura em um corpo unidimensional infinito}{25}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Duas Interpretações das Funcões de Green}{25}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Interpretações das Funcões de Green: Condição inicial, F(x)}{26}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Interpretações das Funções de Green: Geração de calor}{26}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Propriedades comuns às funções de Green transientes}{28}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Dedução da Equação solução em termos das funções de Green}{28}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Equação Solução Geral em termos de FG, 2D e 3D}{32}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Equação Solução Geral 2D em termos de FG}{32}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2}Equação Solução Geral 3D em termos de FG}{33}{subsection.2.7.2}%

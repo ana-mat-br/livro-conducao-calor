@@ -1,0 +1,218 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{arpaci1966}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6d591374d156564c44ed414be8eafbc1}{%
+           family={Arpaci},
+           familyi={A\bibinitperiod},
+           given={V.\bibnamedelimi S.},
+           giveni={V\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Reading}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{6d591374d156564c44ed414be8eafbc1}
+      \strng{fullhash}{6d591374d156564c44ed414be8eafbc1}
+      \strng{bibnamehash}{6d591374d156564c44ed414be8eafbc1}
+      \strng{authorbibnamehash}{6d591374d156564c44ed414be8eafbc1}
+      \strng{authornamehash}{6d591374d156564c44ed414be8eafbc1}
+      \strng{authorfullhash}{6d591374d156564c44ed414be8eafbc1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Conduction Heat Transfer}
+      \field{year}{1966}
+    \endentry
+    \entry{beck1985}{book}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=6c38f26b0f750e8f2f6f6075f0cb7a0f}{%
+           family={Beck},
+           familyi={B\bibinitperiod},
+           given={J.\bibnamedelimi V.},
+           giveni={J\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=06e39a0a821089eda4143cbc810008ae}{%
+           family={Blackwell},
+           familyi={B\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=97abc80f5719890cff20b58c67440c55}{%
+           family={Clair},
+           familyi={C\bibinitperiod},
+           given={C.\bibnamedelimi R.\bibnamedelimi S.},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {[S.l.]}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{62b0220dc869c46e9ad3281f64b826ba}
+      \strng{fullhash}{62b0220dc869c46e9ad3281f64b826ba}
+      \strng{bibnamehash}{62b0220dc869c46e9ad3281f64b826ba}
+      \strng{authorbibnamehash}{62b0220dc869c46e9ad3281f64b826ba}
+      \strng{authornamehash}{62b0220dc869c46e9ad3281f64b826ba}
+      \strng{authorfullhash}{62b0220dc869c46e9ad3281f64b826ba}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-471-08319-1}
+      \field{series}{Wiley-Interscience}
+      \field{title}{Inverse Heat Conduction: Ill-Posed Problems}
+      \field{year}{1985}
+    \endentry
+    \entry{carslaw1959}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=c26e42691fe228793365c83f104c347d}{%
+           family={Carslaw},
+           familyi={C\bibinitperiod},
+           given={H.\bibnamedelimi S.},
+           giveni={H\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d2bd88df4265f05c1ab0dd73bff11f66}{%
+           family={Jaeger},
+           familyi={J\bibinitperiod},
+           given={J.\bibnamedelimi C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Oxford}%
+      }
+      \list{publisher}{1}{%
+        {Clarendon Press}%
+      }
+      \strng{namehash}{14243892d967e14b026f9fbe238efba6}
+      \strng{fullhash}{14243892d967e14b026f9fbe238efba6}
+      \strng{bibnamehash}{14243892d967e14b026f9fbe238efba6}
+      \strng{authorbibnamehash}{14243892d967e14b026f9fbe238efba6}
+      \strng{authornamehash}{14243892d967e14b026f9fbe238efba6}
+      \strng{authorfullhash}{14243892d967e14b026f9fbe238efba6}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{title}{Conduction of Heat in Solids}
+      \field{year}{1959}
+    \endentry
+    \entry{beck2010}{book}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=2155c009d6761268155dfbe6a63c0d4d}{%
+           family={Cole},
+           familyi={C\bibinitperiod},
+           given={K.\bibnamedelimi D.},
+           giveni={K\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6c38f26b0f750e8f2f6f6075f0cb7a0f}{%
+           family={Beck},
+           familyi={B\bibinitperiod},
+           given={J.\bibnamedelimi V.},
+           giveni={J\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=05d8cda5604f9c029a8b4e892af27c4c}{%
+           family={Haji-Sheikh},
+           familyi={H\bibinithyphendelim S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=afee7b75c93a94a8fd7fe45266961c9f}{%
+           family={Litkouhi},
+           familyi={L\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {[S.l.]}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis Group}%
+      }
+      \strng{namehash}{e61559f9c061ca67e6ede40be26e5bf3}
+      \strng{fullhash}{850ba150ea23b57d0f5a7f9164a7e724}
+      \strng{bibnamehash}{e61559f9c061ca67e6ede40be26e5bf3}
+      \strng{authorbibnamehash}{e61559f9c061ca67e6ede40be26e5bf3}
+      \strng{authornamehash}{e61559f9c061ca67e6ede40be26e5bf3}
+      \strng{authorfullhash}{850ba150ea23b57d0f5a7f9164a7e724}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-1-4398-1354-6}
+      \field{series}{Series in Computational and Physical Processes in Mechanics and Thermal Sciences}
+      \field{title}{Heat Conduction Using Green's Functions}
+      \field{year}{2010}
+    \endentry
+    \entry{ozisik1993}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=caf079ec9c17528754047b386d0f7d37}{%
+           family={Özişik},
+           familyi={Ö\bibinitperiod},
+           given={M.\bibnamedelimi N.},
+           giveni={M\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Nova Iorque, NY}%
+      }
+      \list{publisher}{1}{%
+        {Wiley}%
+      }
+      \strng{namehash}{caf079ec9c17528754047b386d0f7d37}
+      \strng{fullhash}{caf079ec9c17528754047b386d0f7d37}
+      \strng{bibnamehash}{caf079ec9c17528754047b386d0f7d37}
+      \strng{authorbibnamehash}{caf079ec9c17528754047b386d0f7d37}
+      \strng{authornamehash}{caf079ec9c17528754047b386d0f7d37}
+      \strng{authorfullhash}{caf079ec9c17528754047b386d0f7d37}
+      \field{sortinit}{Ö}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-471-53256-9}
+      \field{series}{Wiley-Interscience}
+      \field{title}{Heat Conduction}
+      \field{year}{1993}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

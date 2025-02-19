@@ -1,0 +1,492 @@
+\chapter[Funções de Green]{Funções de Green: Obtenção da equação solução em termos de funções de Green}\label{FG}
+
+\section{Vantagens do Método de Funções de Green}
+As funções de Green (FG) são uma ferramenta poderosa na aplicação a soluções de problemas lineares de condução de calor. \textcite{beck2010} citam algumas dessas vantagens no tratamento desses problemas:
+
+\textbf{1.} A primeira vantagem diz respeito a flexibilidade dessas funções, fato que as tornam extremamente poderosas.
+
+A mesma FG pode ser usada para problemas de condução de calor diferentes condições de contorno, desde que se trate de uma mesma geometria. Ou seja, independente das condições de contorno, dos termos de geração de energia volumétrica ou das condições iniciais do campo de temperatura, existe somente uma função de Green relacionada ao problema físico. Ainda, essa função de Green se refere e pode ser obtida de um problema físico de mesma geometria, porém considerando-se todas as condições de contorno homogêneas.
+
+\textbf{2.} Uma segunda vantagem do método GF é o procedimento de solução sistemática.
+
+Muitas GFs estão disponíveis na literatura e encontram-se tabuladas. Por exemplo, o livro  \textcite{beck1993} apresentam várias funções de Green para a grande maioria de problemas envolvendo coordenadas retangulares, cilíndricas e esféricas. Assim, a maioria dessas funções não precisam necessariamente serem obtidas. As autofunções e autovalores também estão disponíveis. O uso dessas funções tabeladas economizam esforço e reduzem a possibilidade de erro. Problemas bidimensionais e tridimensionais podem ser construídos a partir das funções de Green unidimensionais. Este texto, apresenta todas as funções de Green em coordenadas retangulares, expressas matematicamente e implementadas numericamente a partir do estabelecimento de um problema específico. A construção em forma de bloco permite facilmente o uso de problemas mais gerais. A verificação intrínseca dessas soluções permitem também a ganho de confiança nos resultados obtidos a partir das implementações numéricas.
+
+\textbf{3.} Uma terceira vantagem é que GFs bidimensionais e tridimensionais podem ser encontradas, para casos transientes, por simples multiplicação de GFs unidimensionais para o sistema de coordenadas retangulares para a maioria das condições de contorno consideradas em neste livro.  As limitações na obtenção das Funções de Green multidimensionais deve-se a exigência da linearidade da equação diferencia e ainda que o corpo deve ser espacialmente uniforme (homogêneo) e a geometria deve ser ortogonal.  
+
+O uso da multiplicação de FG unidimensionais para a obtenção de FG bi e tridimensional resulta em uma grande simplificação nas soluções de problemas de condução de calor fornecendo um formas compactas para catalogar funções de Green desses casos. Este texto apresenta uma abordagem de parte destes problemas.
+
+\textbf{4.} Uma quarta vantagem é que existem formas alternativas para a obtenção da equação solução em termos FG. Estas formas, chamadas de formas fechadas melhoram a convergência dessas funções e diminuem o número de termos das séries envolvidas, que por sua vez, necessitam, dependendo do problema de um número grande de termos.
+
+\textbf{5.} A quinta vantagem do método FG é a sua verificação intrínseca. Ou seja, as soluções construídas a partir de FG contêm em si os meios para verificar se os valores numéricos calculados estão corretos. Como um exemplo de verificação intrínseca, quando uma solução transiente contém um termo estacionário e um termo transiente, no tempo inicial existe uma região na qual esses termos necessariamente devem somar zero. Assim, essa região esses termos são verificados, um contra o outro.
+
+\textbf{6.} A sexta vantagem do método GF é o particionamento do tempo, que pode reduzir o número de termos da série necessários para obter uma solução precisa. A partição de tempo é um método geral que surge naturalmente do método FG e pode fornecer valores precisos para temperatura usando apenas alguns termos da série infinita.
+
+
+\section{A Função Delta de Dirac Delta}
+
+A função Delta de Dirac (às vezes chamada de função impulso unitário) desempenha um papel central no método das funções de Green. Nesta seção, apresentamos a definição da função Delta de Dirac em termos das propriedades que são mais importantes para o desenvolvimento do método de funções de Green.
+
+Estritamente falando, a função Delta de Dirac é uma função matemática simbólica cuja definição é dada por:
+
+A função Delta de Dirac $\delta (x)$ é definida como zero quando $\delta (x)\neq 0$, e infinita em $x = 0$ de forma que a área sob a função seja unitária.
+
+Algumas das propriedades da função delta de Dirac são dadas por:
+\begin{equation*}
+    \begin{split}
+        \delta(x-x') =  \infty  \qquad & \text{em}  \qquad x = x' \\
+        0 \qquad  & \text{em}  \qquad x \neq x'\\ 
+        \displaystyle \int_{-\infty}^{\infty} \delta(x-x') dx' & =  1 \\  
+        \displaystyle \int_{-\infty}^{\infty} F(x') \delta(x-x') dx' & = F(x) \\  
+        \delta(x-x') \qquad & \text{tem unidade de} \; m^{-1} \\ 
+        \delta(t-\tau) \qquad & \text{tem unidade de} \; s^{-1} \\
+    \end{split}
+\end{equation*}
+
+O uso da função Delta de Dirac na concepção de um problema de condução de calor particular é uma ferramenta importante para se entender o significado físico das funções de Green.  A próxima seção aborda este tema.
+
+\section{Temperatura em um corpo unidimensional infinito}
+A Figura \hl{xx} apresenta um corpo infinito em um modelo unidimensional, propriedades constante com temperatura inicial $F(x)$ e geração de energia volumétrica $g(x,t)$ (com unidades $W/m^3$) cuja equação governante é dada por
+\begin{equation}\label{eq1Da}
+    \frac{\partial^2 T}{\partial x^2} + \frac{g(x,t)}{k}  
+    = \frac{1}{\alpha}\frac{\partial T}{\partial t}  
+\end{equation}
+com as condições de contorno 
+\begin{equation}\label{eq1Db}
+    T(x,0) = F(x)
+\end{equation}
+\begin{equation}\label{eq1Dc}
+    T(x\rightarrow  \pm \infty) = F(x)
+\end{equation}
+
+A temperatura T(x,t) que é uma solução para as Eqs. \ref{eq1Da}-\ref{eq1Dc} pode ser obtida formalmente por meio da Equação da solução da difusão de calor em termos de funções de Green como
+\begin{equation}\label{eq:solg}
+    \displaystyle \theta(x,t) = \int_{x'=0}^{\infty} G(x,t|x',0) F(x')dx' +
+    \frac{\alpha}{k}
+    \int_{0}^{t}\int_{x'=\infty}^{\infty}G(x,t|x',\tau)g(x',\tau)dx'd\tau
+\end{equation}
+
+A obtenção formal da Eq. \ref{eq:solg} será demonstrada para um problema geral, 1D com dimensões finitas transiente, com geração de calor espacial e temporal na próxima seção e sujeito as condições de contorno no homógenas com variação temporal. Assim, para o entendimento físico das funções de Green, considere neste ponto que a Eq.\ref{eq:solg} é solução do problema dado pelas Eqs. \ref{eq1Da}. Esta informação será demonstrada a seguir. No apêndice xx será demonstrado a obtenção da Equação Geral em Termos de Funções de Green.
+
+\section{Duas Interpretações das Funcões de Green}
+Existem dois termos integrais na equação solução  Eq.~\ref{eq:solg}, um contendo as condições iniciais $F(x)$ e o outro contendo a fonte de energia volumétrica $g(x,t)$. Cada termo integral pode ser considerado a solução de um problema separado, um causado por $F(x)$ e outro por $g(x,t)$, que são sobrepostos (ou seja, somados) para formar a solução completa. É importante notar que quando $F$ e $g$ são substituídos nas integrais acima, a dependência coordenada assume a forma $F(x')$ e $g(x',\tau)$, associada às variáveis de integração. Este procedimento será melhor explorado na seção \hl{xxx}.
+
+Duas interpretações físicas diferentes de $G(.)$ podem ser encontradas na equação da solução GF. A primeira interpretação física de G(.) é a distribuição de temperatura causada por uma condição inicial particular e a segunda interpretação é a distribuição de temperatura para uma fonte de calor instantânea.
+
+\subsection{Interpretações das Funcões de Green: Condição inicial, F(x)}
+A primeira interpretação física está associada ao primeiro termo na Eq.~\ref{eq1Da}
+e é a solução $T(x,t)$ para o problema
+\begin{equation}\label{eq1Daa}
+    \frac{\partial ^2T}{\partial x^2} = \frac{1}{\alpha}\frac{\partial T}{\partial t} 
+\end{equation}
+
+\begin{equation}\label{eq1Dbb}
+    T(x,0) = F(x)
+\end{equation}
+
+Se a distribuição de temperatura inicial for zero em todos os lugares, exceto em $x_0$ onde
+exite um distribuição inicial igual a $F'_0$ vezes a função delta de Dirac .
+
+\begin{equation}\label{delt}
+    F(x) = F'_0 \delta(x-x_0)
+\end{equation}
+então a solução das Eqs.~\ref{eq1Daa} e \ref{delt} é
+\begin{equation}\label{eq:solTi}
+    \displaystyle \theta(x,t) = \int_{x'=0}^{\infty} G(x,t|x',0) F'_0 \delta(x'-x_0)dx'
+\end{equation}
+ou
+\begin{equation}\label{deltfx}
+	T(x,t) = F'_0 \; G(x,t|x_0,0)
+\end{equation}
+e portanto
+\begin{equation}\label{deltfx1}
+	T(x,t) = G(x,t/x_0,0)
+\end{equation}
+
+Isto significa que
+\begin{equation}\label{deltfx2}
+	G(x,t/x_0,0) =	T(x,t)
+\end{equation}
+
+
+Portanto, a função de Green $G(x,t/x',0)$ pode ser interpretada como sendo a distribuição de temperatura no corpo que resulta da solução de  um problema térmico de dimensões infinitas cuja distribuição inicial é devido o produto de $F'_0$ vezes a função delta de Dirac de onde a magnitude de $F'_0$ é dada por $F'_0= 1 K-m$ (Kelvin-metro). 
+
+As unidades de $G(.)$ é de unidade  $m^{-1}$ assim como a unidade de $\delta(x-x_0)$ também é $m^{-1}$.
+
+\subsection{Interpretações das Funções de Green: Geração de calor}
+A segunda interpretação física de uma GF é a temperatura causada por uma fonte de calor instantânea no instante $t_0$ e na posição $x_0$ e de intensidade $H\rho c$.
+Para este caso, o termo de geração de energia volumétrica na equação do calor, \ref{eq:solg} torna-se
+
+\begin{equation}\label{deltfx3}
+    g(x,t) = H \rho c \delta(x-x_0) \delta(t-t_0)
+\end{equation}
+onde $H$ tem unidades de $K-m$; $\delta (x-x_0)$ tem unidade de $m^-1$; $\delta(t-t_0)$ tem unidade de $s^-1$; e $\rho c$ tem unidade de $J/m^3/K$.
+
+Essas unidades são consistentes com as do volume de geração de energia $g(x,t)$, que são $W/m^3$. O símbolo $g$ dado pela Eq.~\ref{deltfx3} representa a quantidade de energia que é liberada em $x=x_0$ e em $t = t_0$.
+
+O termo $g(x_0,t_0)$ pode ser visualizado como a energia associada a uma fonte plana aplicada em um instante $t_0$ na direção normal ao eixo $x
+$. Pode ser representado, por exemplo, como uma fonte laser (pulsada) sendo liberada em $x = x_0$ e no instante de tempo $t_0$. Para este caso, descreve-se a equação diferencial governante do problema como sendo
+\begin{equation}\label{eq1Gx}
+    \frac{\partial ^2 T}{\partial x^2} + \frac{H \rho c \delta(x-x_0) \delta(t-t_0)}{k}
+    = \frac{1}{\alpha} \frac{\partial T}{\partial t}  
+\end{equation}
+
+Para esse problema, a condição inicial é distribuição e temperatura igual  zero, ou seja
+\begin{equation}\label{eqinit}
+    T(x,t_0) = 0
+\end{equation}
+
+Nesse caso, a solução das Eqs.~\ref{eq1Gx} é dada por 
+\begin{equation}\label{eq:solg1}
+    \theta(x,t) =  + \frac{\alpha}{k}\int_{0}^{t} 
+    \int_{x'=-\infty}^{\infty}G(x,t|x',\tau)H \rho c \delta(x'-x_0) \delta(t-t_0) dx'd\tau
+\end{equation}
+
+Ou seja,
+\begin{equation}\label{eq:solg2}
+    \theta(x,t) =  + \frac{\alpha}{k}H \rho c 
+    \int_{0}^{t}\int_{x'=-\infty}^{\infty}G(x,t|x',\tau) \delta(x'-x_0) \delta(t-t_0) dx'd\tau
+\end{equation}
+
+Portanto,	
+\begin{equation}\label{deltfx30}
+    T(x,t) = H\;G(x,t/x_0,t_0) 
+\end{equation}
+
+como $H=1$,
+	
+\begin{equation}\label{deltfx4}
+    T(x,t) = G(x,t/x_0,t_0)  
+\end{equation}
+	
+ou
+\begin{equation}\label{deltfx5}
+    G(x,t/x_0,t_0) = T(x,t)
+\end{equation}
+	
+Isso significa que a FG é igual ao aumento de temperatura para a fonte de calor plana instantânea dada pela Eq.~\ref{deltfx5} com $H = 1 K.m$.
+	
+Essas duas formas alternativas de se pensar sobre GFs transientes são muito importantes.
+	
+Na primeira interpretação, a FG é igual à temperatura resultante de uma distribuição de temperatura inicial que é zero em todos os lugares, exceto em uma determinada posição $x_0$ cuja magnitude é dada pelo produto da função Delta de Dirac e intensidade de $1 K-m$.
+	
+Na segunda interpretação, a FG é igual ao aumento de temperatura devido a aplicação de uma fonte plana instantânea de Geração de calor cuja magnitude é dada pelo produto de produto da função Delta de Dirac e de uma intensidade de $K-m$ vezes $\rho c$.	
+	
+\section{Propriedades comuns às funções de Green transientes}
+As propriedades comuns a FG para condução de calor transiente são resumidas a seguir.
+
+1. A FG obedece à soluçao de um problema auxiliar.
+	
+2. A FG é uma solução do problema de condução de calor com a mesma geometria, e mesmo tipo de condições de contorno do problema original, porém em sua versão homogênea.
+
+3. A FG obedece à relação de causalidade: $G\geq 0$ no domínio $R$ para $t\geq 0$; e, $G = 0$ no domínio $R$ para $t \leq 0 $ 
+
+4. O FG obedece à relação de reciprocidade: $G(x,t/x',\tau)= G(x',-\tau/x,-t)$. 
+
+5. A dependência temporal de $G$ é sempre $t-\tau$ , então uma $FG$ unidimensional pode ser escrita como G(x, x', t -$\tau$).
+
+6. Em coordenadas retangulares, a $FG$  transiente tem unidades de:$ m^{-1} $ para problemas unidimensionais; $ m^{-2} $ para problemas bidimensionais; e $ m^{-3} $ para problemas tridimensionais.
+Toda $FG$ é uma solução para uma equação auxiliar com contorno homogêneo condições. 
+
+A  $FG$  é sempre positiva ou nula, porque é a resposta da temperatura causada por um pulso de calor positivo. 
+	
+A relação de causalidade refere-se à ideia de que  a $FG$  é a resposta no tempo t e localização x para um pulso de calor que ocorre em um instante $\tau$ e na localização $x'$. Em um sistema real (ou causal), não pode haver resposta antes que o pulso de calor ocorra.
+
+A relação de reciprocidade pode ser entendida a partir da equação auxiliar. 
+
+Trocar $x$ e $x'$ na equação auxiliar deixa o sinal do solução inalterada por causa da segunda derivada em relação a $x$. 
+Entretanto, trocar $t$ e $\tau$ muda o sinal da solução, devido a primeira derivada em relação a t. A orientação espacial não tem direção preferencial na condução de calor, mas o tempo tem uma direção preferencial.
+\section{Dedução da Equação solução em termos das funções de Green}
+Inicialmente, escrevemos a equação governante do problema original generalizado
+\begin{equation}\label{eqGT}
+    \frac{\partial ^2T}{\partial x^2} + \frac{g(x,t)}{k} 
+    = \frac{1}{\alpha} \frac{\partial T}{\partial t}  
+\end{equation}
+sujeito ás condições de contorno
+\begin{equation}\label{ccemT}
+    k_i \frac{\partial T(x_i,t)}{\partial x}  + h_i T(x_i,t) =  f_i(x_i,t)   
+\end{equation}
+e à condição inicial
+\begin{equation}\label{iniT}
+    T(x,0) = F(x)
+\end{equation}
+	
+Suponha um problema auxiliar definido pela versão homogênea do problema original (Eq.~\ref{eqGT}
+\begin{equation}\label{eqGG}
+    \frac{\partial ^2G}{\partial x^2} + 
+    \frac{1}{\alpha} \delta(x-x')\delta(t-\tau) = 
+    \frac{1}{\alpha} \frac{\partial G}{\partial t}  
+\end{equation}
+
+sujeito ás condições de contorno
+\begin{equation}\label{ccemG}
+    k_i \frac{ \partial G(x_i,t)} {\partial x}  +h_i G(x_i,t) =  0   
+\end{equation}
+e à condição inicial	
+\begin{equation}\label{iniG}
+    G(x,0) = 0
+\end{equation}
+	
+Considerando a reciprocidade
+\begin{equation}\label{rec}
+    G(x,t/x',t) =  G(x',-\tau/x, -t) 
+\end{equation}
+então é possível a mudança de variável na função $G(x,t/x',t)$ ou seja
+	
+\begin{equation}\label{eq1DGtau}
+    \frac{\partial^2 G}{\partial x'^2} + 
+    \frac{1}{\alpha} \delta(x'-x)\delta(t-\tau) = 
+    -\frac{1}{\alpha} \frac{\partial G}{\partial \tau}  
+\end{equation}
+Observe o sinal negativo na derivada temporal. Como já mencionado, o tempo tem uma direção preferencial. Isto é, ele somente ocorre em um sentido. Nesse caso, como a dependência da  função de Green no tempo é dada por $G(u)$ sendo $u =  t - \tau$, ou $\tau = t - u$ . Assim, uma vez que
+\begin{equation}\label{rec3}
+    \frac{ \partial u}{\partial t} = 1
+\end{equation}
+	
+\begin{equation}\label{rec4}
+    \frac{ \partial u}{\partial \tau} = -1
+\end{equation}
+então
+	
+\begin{equation}\label{rec6}
+    \frac{\partial G(u)}{\partial u} = 
+    \frac{\partial G(u)}{\partial t} \frac{\partial t}{\partial u} = 
+    \frac{\partial G(u)}{\partial t}
+\end{equation}
+porém   	
+\begin{equation}\label{rec7}
+    \frac{\partial G(u)}{\partial u} = 
+    \frac{\partial G(u)}{\partial \tau} \frac{\partial \tau}{\partial u} =
+    -\frac{ \partial G(u)}{\partial \tau} 
+\end{equation}
+
+Assim, avaliando $T(x,t)$ em $T(x',\tau)$ tem-se equação do campo de temperatura escrita em termos $T(x',\tau)$
+\begin{equation}\label{eq1DT1}
+    \frac{\partial^2 T}{\partial x'^2} + 
+    \frac{g(x',\tau)}{k} 
+    = \frac{1}{\alpha} \frac{\partial T}{\partial \tau}  
+\end{equation}
+multiplicando a Eq. \ref{eq1DT1} por $G(x,t/x',\tau)$ obtém-se
+	
+\begin{equation}\label{eq1DT2}
+    G \times \frac{\partial^2 T}{\partial x'^2} + 
+    G \times \frac{g(x',\tau)}{k} = 
+    G \times \frac{1}{\alpha}\frac{\partial T}{\partial \tau}  
+\end{equation}
+
+Por sua vez, multiplicando a Eq.~\ref{eq1DGtau} por $T(x',\tau)$ obtém-se
+\begin{equation}\label{eq1DGtau1}
+    T \times \frac{\partial^2 G}{\partial x'^2} + 
+    T \times \frac{1}{\alpha} \delta(x'-x)\delta(t-\tau) = 
+  - T \times \frac{1}{\alpha} \frac{\partial G}{\partial \tau}  
+\end{equation}
+
+Subtraindo a Eq.~\ref{eq1DT2} pela  Eq.~\ref{eq1DGtau1}
+\begin{equation}\label{eq1DT3}
+    G \frac{\partial^2 T}{\partial x'^2} - 
+    T \frac{\partial^2 G}{\partial x'^2} + 
+    \frac{G}{k}g(x',\tau) - \frac{T}{\alpha}\delta(x'-x)\delta(t-\tau ) = 
+    G \frac{1}{\alpha} \frac{\partial T}{\partial\tau} + 
+    T \frac{1}{\alpha} \frac{\partial G}{\partial\tau}  
+\end{equation}	
+
+Resta-nos portanto integrar cada membro da Eq.~\ref{eq1DT3} no espaço e no tempo. Ou seja
+\begin{equation}\label{eq1DT4}
+    G \frac{\partial^2 T}{\partial x'^2} -
+    T \frac{\partial^2 G}{\partial x'^2} + 
+    \frac{G}{k}g(x',\tau) - \frac{T}{\alpha}\delta(x'-x)\delta(t-\tau) = 
+    \frac{1}{\alpha} \frac{\partial(TG)}{\partial\tau} 
+\end{equation}	
+integrando 
+
+\begin{equation}\label{eq:TGTG1}
+    \begin{split}
+	\int_{d\tau=0}^{t+\epsilon} d\tau
+        \int_{x'=0}^{L} \left(G \frac{\partial^2 T}{\partial x'^2} 
+      - T \frac{\partial ^2G} {\partial x'^2} \right)dx' + 
+	\frac{1}{k} \int_{d\tau=0}^{t+\epsilon} d\tau \int_{x'=0}^{L} g(x',\tau) G(x,t|x',\tau) dx' - \\
+        \frac{1}{\alpha}\int_{x'=0}^{L} \int_{d\tau=0}^{t+\epsilon}T(x',t) \delta(x'-x)\delta(t-\tau) dx' d\tau = 
+        \frac{1}{\alpha} \; \int_{x'=0}^{L} dx' \int_{d\tau=0}^{t+\epsilon} \; \frac{ \partial (T \; G)} {\partial \tau} d\tau
+    \end{split}
+\end{equation}
+	
+Isolando o terceiro membro esquerdo da Eq.~\ref{eq:TGTG1} temos 
+\begin{equation}\label{eq:TGTG2}
+    \begin{split}
+        \frac{1}{\alpha}\int_{x'=0}^{L} 
+        \int_{d\tau=0}^{t+\epsilon}T(x',\tau) \delta(x'-x)\delta(t-\tau) dx' d\tau = 
+        \alpha \int_{d\tau=0}^{t+\epsilon} d\tau 
+        \int_{x'=0}^{L} \left(G\frac{\partial^2T}{\partial x'^2} - 
+        T \frac{\partial^2 G}{\partial x'^2}\right)dx' + \\
+        \frac{\alpha}{k} \int_{d\tau=0}^{t+\epsilon} d\tau
+        \int_{x'=0}^{L}g(x',\tau)G(x,t|x',\tau) dx' - 
+        \int_{x'=0}^{L} dx' 
+        \int_{d\tau=0}^{t+\epsilon} \frac{\partial(TG)}{\partial\tau} d\tau 
+    \end{split}
+\end{equation}
+
+Porém, considerando a propriedade da função Delta de Dirac
+\begin{equation}\label{eq:dirac}
+    \int_{-\infty}^{\infty} F(x') \delta(x-x') dx' = F(x)
+\end{equation}	
+o membro esquerdo da Eq.~\ref{eq:TGTG2} se reduz a 
+\begin{equation}\label{eq:TGTG3}
+    \frac{1}{\alpha}\int_{x'=0}^{L} 
+    \int_{\tau=0}^{t+\epsilon}T(x',\tau) \delta(x'-x)\delta(t-\tau) dx' d\tau = 	\frac{1}{\alpha}\int_{x'=0}^{L} T(x',t+\epsilon) \delta(x'-x)dx' 
+\end{equation}
+e a 
+\begin{equation}\label{eq:TGTG4}
+    \frac{1}{\alpha}\int_{x'=0}^{L} 
+    \int_{\tau=0}^{t+\epsilon}T(x',\tau) \delta(x'-x)\delta(t-\tau) dx' d\tau = 	\frac{1}{\alpha} T(x,t+\epsilon) 
+\end{equation}
+portanto, isolando $T(x,t)$ têm-se
+\begin{equation}\label{eq:TGTG5}
+    \begin{split}
+        T(x,t)= -\int_{d\tau=0}^{t+\epsilon} \frac{\partial (TG)}{\partial\tau} d\tau +
+        \frac{\alpha}{k} 
+        \int_{d\tau=0}^{t+\epsilon} d\tau 
+        \int_{x'=0}^{L}g(x',\tau)G(x,t|x',\tau) dx' + \\ 
+	\alpha \int_{d\tau=0}^{t+\epsilon} d\tau
+        \int_{x'=0}^{L} \left(G\frac{\partial ^2T}{\partial x'^2} - T \frac{\partial^2 G}{\partial x'^2}\right)dx'
+    \end{split}
+\end{equation}
+
+O primeiro termo do lado direito da Eq.~\ref{eq:TGTG5} pode ser escrito como
+\begin{equation}\label{eq:TG1}
+    \int_{\tau=0}^{t+\epsilon} \frac{\partial(TG)}{\partial \tau} d\tau =
+    [TG]_0^{t+\epsilon} = T(x',t+\epsilon) G(t-(t+\epsilon)) - T(x',0) G(x,t/x',0)
+\end{equation}
+como $T(x,0)$ é a condição inicial do problema original, ou seja $T(x',0)=F(x')$ e ainda	$G(-\epsilon)=0$ então
+\begin{equation}\label{eq:xx2}
+    [TG]_0^{t+\epsilon} = T(x',t+\epsilon) \times 0 - T(x',0) G(x,t/x',0) = F(x') G(x,t/x',0)				
+\end{equation}
+ou
+\begin{equation}\label{eq:xx3}
+    [TG]_0^{t+\epsilon} = - F(x') G(x,t|x',0)	
+\end{equation}
+
+Integrando por partes o segundo termo do lado direito da Eq.~\ref{eq:TGTG4} obtem-se
+\begin{equation}\label{eq:TGTG51}
+        \int_{x'=0}^{L} \left(G\frac{\partial ^2T}{\partial x'^2} -
+        T \frac{\partial ^2G}{\partial x'^2}\right)dx' = 
+        \left. G{\frac{\partial{T}}{\partial{x}}} \right|^{x'=L}_{x'=0} -\int_{x'=0}^{L}\frac{\partial G}{\partial x'} \frac{\partial T} {\partial x'} dx' - 
+	\left. T{\frac{\partial{G}}{\partial{x}}}\right|^{x'=L}_{x'=0} +
+        \int_{x'=0}^{L}\frac{\partial T}{\partial x'}\frac{\partial G}{\partial x'}dx'
+\end{equation}
+ou seja
+\begin{equation}\label{eq:TGTG6}
+    \int_{x'=0}^{L} 
+    \left(G \frac{\partial ^2T} {\partial x'^2} - 
+    T \frac{\partial ^2G} {\partial x'^2}\right)dx' = 
+    G \left.{\frac{\partial{T}}{\partial{x'}}}\right|^{x'=L}_{x'=0} 
+   -T \left.{\frac{\partial{G}}{\partial{x'}}}\right|^{x'=L}_{x'=0}
+\end{equation}
+
+Observem que o termo do lado direito da \hl{Eq.} pode ser obtido a partir das condições de contorno do problema original e do problema auxiliar, ou seja se
+\begin{equation}\label{eq:ccT}
+    \left.{\frac{\partial{T}}{\partial{x'_i}}}\right|_{x'=x_i} =
+    \frac{f_i(\tau)}{k_i} - \frac{h_i}{k_i} \left.{T}\right|_{x'=x_i}
+\end{equation}
+e 
+\begin{equation}\label{eq:ccG}
+    \left.{\frac{\partial{G}}{\partial{x'_i}}}\right|_{x'=x_i} =
+    -\frac{h_i}{k_i} \left.{G}\right|_{x'=x_i}
+\end{equation}
+então, multiplicando a Eq.~\ref{eq:ccT} por $G$ e a Eq.~\ref{eq:ccG} por $T$ e subtraindo, obtém-se 
+\begin{equation}\label{eq:ccTG}
+    \left.{G}\right|_{x'=x_i}\left.{\frac{\partial{T}}{\partial{x'_i}}}\right|_{x'=x_i} - 
+    \left.{T}\right|_{x'=x_i} \left.{\frac{\partial{G}}{\partial{x'_i}}}\right|_{x'=x_i} = 
+    \left.{G}\right|_{x'=x_i} \left( \frac{f_i(\tau)}{k_i} -  \frac{h_i}{k_i} \left.{T}\right|_{x'=x_i}   \right  )  + 
+    T \frac{h_i}{k_i} \left.{G}\right|_{x'=x_i}
+\end{equation}
+e logo
+\begin{equation}\label{eq:ccTG1}
+    \left.{G}\right|_{x'=x_i}\left.{\frac{\partial{T}}{\partial{x'_i}}}\right|_{x'=x_i} - 
+    \left.{T}\right|_{x'=x_i} \left.{\frac{\partial{G}}{\partial{x'_i}}}\right|_{x'=x_i} =  
+    \frac{f_i(\tau)}{k_i} \left.{G}\right|_{x'=x_i}
+\end{equation}
+portanto o termo pode ser escrito para sua avaliação em cada contorno como
+\begin{equation}\label{eq:TGTG9}
+    G \left.{\frac{\partial{T}}{\partial{x'}}}\right|^{x'=L}_{x'=0} 
+   -T \left.{\frac{\partial{G}}{\partial{x'}}}\right|^{x'=L}_{x'=0} =        \frac{f_i(\tau)}{k_i} \left.{G}\right|_{x'=L} +
+    \frac{f_i(\tau)}{k_i} \left.{G}\right|_{x'=0}
+\end{equation}			
+e portanto a expressão pode ser representada como uma soma nos respectivos contornos com $i= 1, 2$ ou seja,  $x_1=0$ e $x_2=L$ caso as condições de contorno envolvam fluxo de calor prescrito ou meio convectivo. 
+\begin{equation}\label{eq:TGTG10}
+    G \left.{\frac{\partial{T}}{\partial{x}}}\right|^{x'=L}_{x'=0}
+  - T \left.{\frac{\partial{G}}{\partial{x}}}\right|^{x'=L}_{x'=0} =
+    \sum_{i=1}^{2} \frac{f_i(\tau)}{k_i} \left.{G}\right|_{x'=x_i}
+\end{equation}
+
+Entretanto, se a condição de contorno em $x_i=1$ ou $2$ então necessariamente $k_i$ devem assumir o valor de zero. Observa-se que a condição de contorno do problema auxiliar é dada por
+\begin{equation}\label{eq:ccG2}
+    \left.{\frac{\partial{G}}{\partial{x'_i}}}\right|_{x'=x_i} = 
+    -\frac{h_i}{k_i} \left.{G}\right|_{x'=x_i}
+\end{equation}
+então o termo  pode ser substituído por
+\begin{equation}\label{eq:ccG3}
+    \frac{1}{k_i} \left.{G}\right|_{x'=x_i} = 
+    -\frac{1}{h_i} \left.{\frac{\partial{G}}{\partial{x'_i}}}\right|_{x'=x_i}
+\end{equation}
+
+Portanto a Equação solução Unidimensional em termos de funções de Green pode ser escrita como
+\begin{equation}\label{eq:GERAL1DG}
+  \begin{split}
+   T(x,t) = \int_{x'=0}^{L} F(x')G(x,t|x',0) dx' +
+    \frac{\alpha}{k}
+    \int_{\tau=0}^{t} d\tau\int_{x'=0}^{L}g(x',\tau)G(x,t|x',\tau) dx' + \\
+    -\alpha\int_{\tau}^{t} d\tau\sum_{i=1}^{2} f_i\frac{1}{k_i} 
+    \left. G \right|_{x'=x_i} - 
+    \alpha \int_{\tau}^{t} d\tau\sum_{j=1}^{2} f_j(\tau)
+    \frac{1}{h_i}
+    \left. \frac{\partial{G}}{\partial{x'}} \right|_{x'=x_j}     
+  \end{split}
+\end{equation}  
+	Observa-se que o primeiro termo da Eq.~\ref{eq:GERAL1DG} refere-se a influência da condição inicial, $F(x)$ e  segundo  se reporta à geração de calor, dada por $g(x0$. A influência das condições de contorno são computadas nos terceiro e quarto termo. No terceiro termo os valores de  $f_i(\tau), k_i, h_i$ representam as condições de contorno do segundo e terceiro tipo (quarto termo) enquanto o quinto termo as do primeiro tipo.
+Apresentam-se a seguir, as Equações soluções em termos das funções de Green para problemas bi e tridimensionais.
+\section{Equação Solução Geral em termos de FG, 2D e 3D}
+A obtenção do primeiro e segundo termo são bem similares ao apresentado na seção anterior para problemas unidimensionais. Apenas os termos relativos à influência da condição de contorno são obtidos de forma mais geral, aplicando-se o teorema das funções de Green. Apresentam-se  a demonstração da função de Green 3D transiente, no apêndice xx.
+	
+\subsection{Equação Solução Geral 2D em termos de FG}
+
+\begin{equation}\label{eq:GERAL3DG1}
+    \begin{split}
+        T(\textbf{r},t)= \int_{R'} F(\textbf{r}')G(\textbf{r},t|\textbf{r}',0) dS' +
+        \frac{\alpha}{k} 
+        \int_{\tau=0}^{t} d\tau\int_{R'} g(\textbf{r}',\tau) G(\textbf{r},t|\textbf{r}'\tau) dS' + \\ 
+	\alpha \sum_{j=1}^{N}\int_{\tau=0}^{t}\int_{l'_i}
+        \left. \left( \frac{f_i(r',\tau)}{k_i G}\right) 
+        \right|_{\textbf{\textbf{r}}'=\textbf{r}_i} dl'_i  d\tau -
+	\alpha \sum_{j=1}^{N}\int_{\tau=0}^{t} 
+        \int_{l'_i}	f_j(\textbf{r},\tau) 
+        \left. \frac{\partial{G}}{\partial{\eta'}} \right|_{r'=r_i} dl'_i  d\tau        
+    \end{split}
+\end{equation}
+sendo
+\begin{equation*}\label{eq:Geral2}
+    \textbf{r}= (x,y) \qquad N=4, \qquad l_i = x \; \text{ou} \; y 
+\end{equation*}
+	
+\subsection{Equação Solução Geral 3D em termos de FG}
+\begin{equation}\label{eq:GERAL3DG}
+    \begin{split}
+       T(\textbf{r},t) = 
+        \int_{R'} F(\textbf{r}')G(\textbf{r},t|\textbf{r}',0) dV' +
+       \frac{\alpha}{k} 
+       \int_{\tau=0}^{t} d\tau\int_{R'} g(\textbf{r}',\tau) G(\textbf{r},t|\textbf{r}'\tau) dV' + \\
+        \alpha \sum_{j=1}^{N} \int_{\tau=0}^{t} \int_{S'_i}
+       \left. \left({\frac{f_i(\textbf{r}',\tau)}{k_i} G}\right) \right|_{\textbf{\textbf{r}}'=\textbf{r}_i} dA'_i d\tau -
+       \alpha \sum_{j=1}^{N} \int_{\tau=0}^{t} \int_{S'_i}
+       f_j(\textbf{r},\tau) 
+       \left.{\frac{\partial G}{\partial \eta'}}\right|_{r'=r_i} dA'_i d\tau     
+   \end{split}
+\end{equation}
+sendo
+\begin{equation*}\label{eq:Geral3}
+    \textbf{r}= (x,y,z) \qquad N=6, \qquad dA = dxdy
+\end{equation*}
+
+\begin{equation*}\label{eq:Geral4}
+    dS_i \rightarrow  \text{área na face} \; i           
+\end{equation*}
+
+\printbibliography[heading=subbibliography]

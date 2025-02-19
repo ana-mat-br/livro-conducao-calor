@@ -1,0 +1,93 @@
+\documentclass[a4paper,12pt,fleqn,twoside]{book}
+\usepackage[lmargin=2.0cm, rmargin=2.0cm, tmargin=3.0cm, bmargin=3.0cm]{geometry}
+\usepackage[portuguese]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage[colorlinks,linkcolor=black,citecolor=black]{hyperref}
+\usepackage[sc]{mathpazo}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\usepackage{subfigure}
+\usepackage{listings}
+\usepackage{lastpage}
+\usepackage{float}
+\usepackage{hyphenat}
+\usepackage{soul} % para usar o \hl 
+
+\usepackage[backend=biber, style=abnt]{biblatex}
+\addbibresource{bancoref.bib}
+
+\makeglossary
+%\pagestyle{myheadings}
+%\setcounter{secnumdepth}{4}
+%\setcounter{tocdepth}{4}
+
+% configuração do ambiente de dedicatória
+\newenvironment{dedication}{\bgroup\par\noindent\textbf{Dedicatória}\par%
+	\[}{\]\egroup}
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	\title{\Huge \textbf{Condução de Calor:}  \\ \huge Aplicações das Funções de Green em Problemas de Engenharia}
+	\author{Gilmar Guimarães; Ana P. Fernandes \\ Eduardo O. Peixoto, Sidney R. Silveira}
+	%\frontmatter
+	\maketitle
+	
+	% dedicatória
+	\thispagestyle{empty}
+	\begin{dedication}
+		\text{Dedicado ao Prof. James V. Beck}
+	\end{dedication}
+	
+	\pagenumbering{arabic}
+	% sumário, lista de figuras e tabelas
+	\thispagestyle{empty}
+	\tableofcontents
+	\thispagestyle{empty}
+	\listoffigures
+	%\listoftables
+	%\mainmatter
+	
+	%prefácio
+	\thispagestyle{empty}
+	\chapter*{Prefácio}
+
+	O entendimento das trocas térmicas que ocorrem na natureza e a sua consequente aplicação em problemas de engenharia é a grande motivação do desenvolvimento deste texto. O uso das funções de Green como ferramenta para a solução de problemas  de condução de calor torna-se um instrumento valioso para engenheiros, físicos e matemáticos na solução dos mais variados problemas. Textos clássicos e indispensáveis na literatura como \textcite{carslaw1959}, \textcite{arpaci1966}, \textcite{ozisik1993}, \textcite{beck2010}, \textcite{beck1985} são a base dos fundamentos encontrados aqui e serão constantemente referenciados e recomendados ao longo deste texto. São duas as motivações no desenvolvimento deste texto:
+		
+	A primeira reflete o objetivo de reunir em um texto os fundamentos de condução de calor, algumas de sua particularidades e, principalmente, fornecer ao profissional ou estudante de engenharia, ferramentas matemáticas poderosas para a solução dos mais variado problemas envolvendo a condução de calor. Ou seja, o contato com o desenvolvimento das soluções analíticas presentes nos textos clássicos, são aqui desenvolvidos de forma a serem implementados numericamente em algoritmos construídos sobre uma plataforma pública como a linguagem Python. As soluções unidimensionais analíticas ou híbridas são detalhadas de forma a permitir que o texto, juntamente com o software disponível possa auxiliar no desenvolvimento de soluções particulares desejadas.
+		
+	O segundo objetivo traz ao leitor o contato com problemas práticos de engenharia ao abordar a transferência de calor em processos de fabricação como usinagem ortogonal, processos de soldagem, fontes móveis, bio-transferência de calor e investigação de propriedades térmicas. A aplicação de técnicas de problemas inversos usando o conceito de função transferência baseadas em funções de Green dá ao usuário deste texto o entendimento e as ferramentas necessárias para a solução de problemas de engenharia mais complexos.
+
+	Novamente, a força e a contribuição deste texto está intimamente ligado ao uso da plataforma digital e das soluções fundamentais de problemas mais simples até problemas mais complexos que envolvem a condução de calor.
+	
+	\hl{Colocar uma trajetória das pesquisas no TCME}
+
+	\printbibliography[heading=subbibliography]
+	\thispagestyle{empty}
+	%\section*{Estrutura do Livro}
+	%
+	%\cite{beck1985inverse}
+	%O Capítulo 1 apresenta os conceitos básicos e fundamentais da condução de calor. Recomenda-se fortemente que o leitor acesse quando necessário os textos de \citet{Carslaw1959ConductionSolids},\cite{Arpaci1966ConductionTransfer}, \cite{Ozisik1993HeatConductionb},\cite{Beck2010HeatFunctions}. No capítulo 2 e 3 são introduzidos a formulação, a obtenção da solução da equação da difusão de calor usando-se as técnicas de funções de Green e o procedimento para a obtenção dessas funções de forma detalhada e direta. Os textos excepcionais de \cite{Ozisik1993HeatConduction} e \cite{Beck2010HeatFunctions} são usados como base e com certeza devem ser consultados para maiores aprofundamentos.
+	%Soluções fundamentais, unidimensionais e transientes são apresentadas no Cap. 4.
+	%No Capítulo 5 são introduzidas a metodologia para a obtenção de soluções de problemas bi e tri-dimensionais, O conceito de verificação intrínseca, introduzido por \cite{Beck2010HeatFunctions} também são apresentados no Cap. 6. Técnicas de obtenção dessas verificações são também detalhadas no Apêndice B através da obtenção de formas fechadas de somatórios presentes nas soluções baseadas em Funções de Green. Este capítulo encerra o que chamamos de Parte 1 que diz respeito aos fundamentos da condução de calor, das funções de Green e da obtenção das soluções fundamentais 1D-transientes.
+	%Apresentam-se, a partir do Capítulo 7 diversas aplicações da condução de calor presentes em problemas de engenharia.
+	%No capítulo 7 descreve-se a técnica de função transferência baseada em funções de Green TFBGF que será, por sua vez aplicada nos problemas apresentados nos capítulos seguintes.
+	%Apresentam-se a aplicação das soluções em problemas térmicos decorrentes de corte ortogonal como a obtenção da solução de problemas inversos envolvendo estimativas de calor na interface de cavaco-peça-ferramenta (Cap. 8), problemas de bio transferência de calor envolvendo domínio de dupla camada (Cap. 9), e problemas envolvendo fontes móveis como a micro-fresagem (Cap. 10).  Conclui-se o texto apresentando técnicas de estimativas de propriedades térmicas usando-se as funções de Green.
+	%%	\part*{Parte I}
+	%	%\vspace{1cm} 
+	%	\section*{Fundamentos, Funções de Green e Soluções fundamentais}
+	
+	%\include{Resumo_Introd}
+	
+	% capitulo 1 e referencias
+	\thispagestyle{empty}
+	\include{capitulo01}
+	\include{capitulo02}
+	\thispagestyle{empty}
+	%\include{equacoes}
+
+\end{document} 
