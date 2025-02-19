@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.16)  19 FEB 2025 10:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.16)  19 FEB 2025 19:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1690,13 +1690,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22177 strings out of 474116
- 384971 string characters out of 5743682
+ 22178 strings out of 474116
+ 384982 string characters out of 5743682
  1948187 words of memory out of 5000000
- 43956 multiletter control sequences out of 15000+600000
+ 43957 multiletter control sequences out of 15000+600000
  613445 words of font info for 139 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,15n,97p,1095b,6032s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,15n,97p,1117b,6032s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
@@ -1706,10 +1706,10 @@ cal/texlive/2024/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/
 texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2024/t
 exmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (34 pages, 9573064 bytes).
+Output written on main.pdf (34 pages, 9573364 bytes).
 PDF statistics:
- 834 PDF objects out of 1000 (max. 8388607)
- 599 compressed objects within 6 object streams
+ 837 PDF objects out of 1000 (max. 8388607)
+ 601 compressed objects within 7 object streams
  171 named destinations out of 1000 (max. 500000)
  251 words of extra memory for PDF output out of 10000 (max. 10000000)
 
